@@ -23,7 +23,15 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        css: [
+                            'vue-style-loader',
+                            'css-loader'
+                        ]
+                    }
+                }
             },
             {
                 test: /\.js$/,
@@ -39,9 +47,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [{
-                        loader: 'vue-style-loader'
-                    },
+                use: [
                     MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
